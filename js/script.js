@@ -17,13 +17,13 @@ const app = Vue.createApp ({
         showEmail (){
             this.emailList = [],
             axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
-            .then(emailResponse => (this.emailList = emailResponse.data.response));
+            .then(emailResponse => (this.emailList.push(emailResponse.data.response)));
         },
     },
 
-    // created() {
-    //     this.showEmail()
-    // },
+    created() {
+        showEmail()
+    },
 });
 
 app.mount('.box');
