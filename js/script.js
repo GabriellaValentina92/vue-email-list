@@ -15,14 +15,15 @@ const app = Vue.createApp ({
 
     methods: {
         showEmail (){
-            this.emailList = [],
             axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
-            .then(emailResponse => (this.emailList.push(emailResponse.data.response)));
+            .then(emailResponse => this.emailList.push(emailResponse.data.response));
         },
     },
 
     created() {
-        showEmail()
+        for(let i = 0; i < 10; i++){
+            this.showEmail()
+        }
     },
 });
 
